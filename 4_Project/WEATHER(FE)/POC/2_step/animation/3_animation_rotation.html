@@ -31,41 +31,66 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        /* animation-name: bg-changer; */
-        /* animation-duration: 5s; */
+        position: relative;
+        animation: rotate-bg 4s linear infinite alternate;
     }
+
 
     .box {
         height: 100px;
         width: 100px;
         background-color: hotpink;
-        animation-name: shape-changer;
         animation-duration: 4s;
-        animation-iteration-count: 2;
+        border: 3px solid black;
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        animation-iteration-count: infinite;
         animation-fill-mode: forwards;
-        /* animation-delay: 2s; */
+        animation-name: shape-changer;
+        animation-name: box-mover;
+        /* eqaul speed through the animation */
+        animation-timing-function: linear;
+        animation-direction: alternate;
     }
 
-    @keyframes bg-changer {
-        25% {
-            background-color: black;
+    @keyframes rotate-bg {
+        to {
+            transform: rotate(-360deg);
+        }
+        50%{
+            opacity: 1;
+        }
+    }
+
+    @keyframes box-mover {
+        0% {
+            top: 0px;
+            left: 0px
+        }
+
+        33% {
+            left: 0px;
+            top: 100%;
+            transform: translateY(-100%);
         }
 
         50% {
-            background-color: red;
-        }
-    }
-
-    /* -> noraml styling , journey -> check transition */
-    @keyframes shape-changer {
-        75% {
             border-radius: 50%;
         }
 
-        100% {
-            background-color: green;
+        66% {
+            left: 100%;
+            top: 100%;
+            transform: translate(-100%, -100%);
         }
 
+        100% {
+            left: 100%;
+            top: 0%;
+            transform: translateX(-100%);
+
+        }
     }
 </style>
 
